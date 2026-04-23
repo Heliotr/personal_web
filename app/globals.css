@@ -1,26 +1,232 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* 暗夜森林主题配色 */
+  --forest-bg: #1a2a3a;
+  --forest-darker: #0d1520;
+  --forest-card: rgba(255, 255, 255, 0.08);
+  --forest-card-hover: rgba(255, 255, 255, 0.12);
+  --forest-border: rgba(255, 255, 255, 0.15);
+  --forest-border-hover: rgba(245, 166, 35, 0.5);
+  --forest-text: #e8e8e8;
+  --forest-text-dim: #8899aa;
+  --forest-gold: #f5a623;
+  --forest-gold-dark: #d4910f;
+  --forest-green: #2d5a3d;
+  --forest-blue: #3a5a7a;
+  --forest-accent: #5a8a7a;
+}
+
+.light {
+  --forest-bg: #f5f7fa;
+  --forest-darker: #e8ecf0;
+  --forest-card: rgba(255, 255, 255, 0.7);
+  --forest-card-hover: rgba(255, 255, 255, 0.9);
+  --forest-border: rgba(0, 0, 0, 0.1);
+  --forest-border-hover: rgba(245, 166, 35, 0.6);
+  --forest-text: #2d3748;
+  --forest-text-dim: #718096;
+  --forest-gold: #d4910f;
+  --forest-gold-dark: #b67d0d;
+  --forest-green: #38a169;
+  --forest-blue: #3182ce;
+  --forest-accent: #319795;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-forest-bg: var(--forest-bg);
+  --color-forest-darker: var(--forest-darker);
+  --color-forest-card: var(--forest-card);
+  --color-forest-card-hover: var(--forest-card-hover);
+  --color-forest-border: var(--forest-border);
+  --color-forest-border-hover: var(--forest-border-hover);
+  --color-forest-text: var(--forest-text);
+  --color-forest-text-dim: var(--forest-text-dim);
+  --color-forest-gold: var(--forest-gold);
+  --color-forest-gold-dark: var(--forest-gold-dark);
+  --color-forest-green: var(--forest-green);
+  --color-forest-blue: var(--forest-blue);
+  --color-forest-accent: var(--forest-accent);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--forest-bg);
+  color: var(--forest-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--forest-gold);
+  color: var(--forest-darker);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--forest-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--forest-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--forest-gold);
+}
+
+/* 毛玻璃效果 */
+.glass {
+  background: var(--forest-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--forest-border);
+}
+
+.glass-hover:hover {
+  background: var(--forest-card-hover);
+  border-color: var(--forest-border-hover);
+}
+
+/* 大圆角 */
+.rounded-card {
+  border-radius: 20px;
+}
+
+.rounded-button {
+  border-radius: 12px;
+}
+
+/* 卡片悬停效果 */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  border-color: var(--forest-gold);
+  box-shadow: 0 12px 40px rgba(245, 166, 35, 0.15);
+}
+
+/* 按钮悬停效果 */
+.btn-hover {
+  transition: all 0.2s ease;
+}
+
+.btn-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 166, 35, 0.25);
+}
+
+.btn-hover:active {
+  transform: translateY(0);
+}
+
+/* 文字高亮 */
+.text-gold {
+  color: var(--forest-gold);
+}
+
+.text-gold-hover:hover {
+  color: var(--forest-gold);
+}
+
+/* 动画 */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(245, 166, 35, 0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* 松树剪影背景 */
+.pine-pattern {
+  position: relative;
+}
+
+.pine-pattern::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to top, var(--forest-darker) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.pine-trees {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%230d1520' d='M0,64 L80,90 L160,50 L240,80 L320,40 L400,70 L480,30 L560,60 L640,20 L720,50 L800,10 L880,40 L960,0 L1040,30 L1120,10 L1200,40 L1280,20 L1360,50 L1440,64 L1440,120 L0,120 Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* 渐变背景 */
+.gradient-mesh {
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(45, 90, 61, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(58, 90, 122, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(90, 138, 122, 0.08) 0%, transparent 70%);
+}
+
+/* nprogress 进度条自定义 */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--forest-gold), var(--forest-accent));
+  z-index: 9999;
+}
+
+#nprogress .peg {
+  display: none;
 }
