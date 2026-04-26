@@ -7,6 +7,7 @@ interface AboutSectionProps {
   name: string;
   title: string;
   bio: string;
+  avatar?: string;
   stats: {
     yearsExperience: number;
     projectsCompleted: number;
@@ -14,7 +15,7 @@ interface AboutSectionProps {
   };
 }
 
-export function AboutSection({ name, title, bio, stats }: AboutSectionProps) {
+export function AboutSection({ name, title, bio, avatar, stats }: AboutSectionProps) {
   const statItems = [
     { label: "年经验", value: stats.yearsExperience },
     { label: "项目", value: stats.projectsCompleted },
@@ -34,11 +35,21 @@ export function AboutSection({ name, title, bio, stats }: AboutSectionProps) {
         <div className="grid md:grid-cols-2 gap-8 items-start">
           <ScrollReveal delay={0.1}>
             <GlassCard className="p-8 text-center">
-              <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-gradient-to-br from-forest-gold/30 to-forest-accent/30 flex items-center justify-center">
-                <span className="text-4xl font-bold text-forest-gold">
-                  {name.charAt(0)}
-                </span>
-              </div>
+              {avatar ? (
+                <div className="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden border-2 border-forest-gold/30">
+                  <img
+                    src={avatar}
+                    alt={name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-gradient-to-br from-forest-gold/30 to-forest-accent/30 flex items-center justify-center">
+                  <span className="text-4xl font-bold text-forest-gold">
+                    {name.charAt(0)}
+                  </span>
+                </div>
+              )}
               <h3 className="text-lg font-medium text-forest-text mb-1">{name}</h3>
               <p className="text-forest-accent">{title}</p>
             </GlassCard>

@@ -30,6 +30,7 @@ export default async function Home() {
           name={profile.name}
           title={profile.title}
           bio={profile.bio}
+          avatar={profile.avatar}
           stats={profile.stats}
         />
         <SkillsSection skills={profile.skills} />
