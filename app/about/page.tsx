@@ -27,11 +27,21 @@ export default async function AboutPage() {
               <div className="md:col-span-1">
                 <div className="md:sticky md:top-24">
                   <GlassCard className="p-8 text-center">
-                    <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-gradient-to-br from-forest-gold/30 to-forest-accent/30 flex items-center justify-center">
-                      <span className="text-5xl font-bold text-forest-gold">
-                        {profile.name.charAt(0)}
-                      </span>
-                    </div>
+                    {profile.avatar ? (
+                      <div className="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden border-2 border-forest-gold/30">
+                        <img
+                          src={profile.avatar}
+                          alt={profile.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-gradient-to-br from-forest-gold/30 to-forest-accent/30 flex items-center justify-center">
+                        <span className="text-5xl font-bold text-forest-gold">
+                          {profile.name.charAt(0)}
+                        </span>
+                      </div>
+                    )}
                     <h2 className="text-xl font-medium text-forest-text mb-1">
                       {profile.name}
                     </h2>
