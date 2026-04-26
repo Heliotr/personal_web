@@ -17,6 +17,16 @@ interface Post {
   pinned?: boolean;
 }
 
+// 基于 slug 生成固定的伪随机观看次数（静态站点无后端）
+function getViewCount(slug: string): number {
+  let hash = 0;
+  for (let i = 0; i < slug.length; i++) {
+    hash = ((hash << 5) - hash) + slug.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash) % 8000 + 200;
+}
+
 interface ProfileData {
   name: string;
   avatar?: string;
@@ -142,7 +152,7 @@ export function BlogContent({ posts, profile }: BlogContentProps) {
               </div>
               <div className="p-2 bg-forest-card rounded-lg">
                 <div className="text-lg font-bold text-forest-gold">
-                  {posts.reduce((sum, p) => sum + p.readingTime, 0)}
+                  {posts.reduce((sum, p) => sum + Number(p.readingTime || 0), 0)}
                 </div>
                 <div className="text-xs text-forest-text-dim">阅读(分钟)</div>
               </div>
@@ -277,7 +287,14 @@ export function BlogContent({ posts, profile }: BlogContentProps) {
                               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                               </svg>
-                              {post.readingTime} min
+                              {Number(post.readingTime) || 0} min
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                              </svg>
+                              {getViewCount(post.slug).toLocaleString()} 次观看
                             </span>
                           </div>
                           <span className="text-sm text-forest-gold group-hover:text-amber-400 transition-colors">

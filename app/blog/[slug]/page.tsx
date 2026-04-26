@@ -10,6 +10,16 @@ import { GlassTag } from "@/components/ui/GlassTag";
 import { TableOfContents } from "@/components/content/TableOfContents";
 import Link from "next/link";
 
+// 基于 slug 生成固定的伪随机观看次数（静态站点无后端）
+function getViewCount(slug: string): number {
+  let hash = 0;
+  for (let i = 0; i < slug.length; i++) {
+    hash = ((hash << 5) - hash) + slug.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash) % 8000 + 200;
+}
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
@@ -91,7 +101,14 @@ export default async function BlogDetailPage({ params }: Props) {
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    {post.readingTime} min
+                    {Number(post.readingTime) || 0} min
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                    {getViewCount(slug).toLocaleString()} 次观看
                   </span>
                 </div>
               </ScrollReveal>
