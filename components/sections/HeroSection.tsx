@@ -33,17 +33,52 @@ export function HeroSection() {
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center px-6 pt-20">
       <div className="max-w-4xl text-center">
-        {/* 标题 */}
+        {/* 标题区域 - 带几何装饰 */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative inline-block"
         >
+          {/* 左侧几何装饰 */}
+          <motion.div
+            className="absolute -left-16 top-1/2 -translate-y-1/2 hidden md:flex items-center gap-2"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <div className="w-3 h-3 rotate-45 border-2 border-forest-gold/50" />
+            <div className="w-8 h-px bg-gradient-to-r from-transparent to-forest-gold/30" />
+          </motion.div>
+
+          {/* 右侧几何装饰 */}
+          <motion.div
+            className="absolute -right-16 top-1/2 -translate-y-1/2 hidden md:flex items-center gap-2"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <div className="w-8 h-px bg-gradient-to-l from-transparent to-forest-gold/30" />
+            <div className="w-3 h-3 rotate-45 border-2 border-forest-gold/50" />
+          </motion.div>
+
+          {/* 主标题 - 渐变色动画 */}
           <h1 className="text-5xl md:text-7xl font-bold tracking-wider mb-4">
-            <span className="bg-gradient-to-r from-forest-gold to-amber-400 bg-clip-text text-transparent">
+            <motion.span
+              className="text-gradient-title inline-block"
+              animate={{
+                y: [0, -5, 0],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
               Helior的小破站
-            </span>
+            </motion.span>
           </h1>
+
           <p className="text-xl md:text-2xl text-forest-text-dim mb-8 font-light">
             个人作品集 · 技术博客 · 创意空间
           </p>
@@ -63,7 +98,7 @@ export function HeroSection() {
           </p>
         </motion.div>
 
-        {/* CTA按钮 */}
+        {/* CTA按钮 - 更扁平的毛玻璃效果 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -71,14 +106,22 @@ export function HeroSection() {
           className="flex gap-4 justify-center flex-wrap"
         >
           <Link href="/projects">
-            <GlassButton variant="primary" size="lg">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-8 py-3 bg-gradient-to-r from-forest-gold to-orange-500 text-forest-darker font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+            >
               探索作品
-            </GlassButton>
+            </motion.button>
           </Link>
           <Link href="/blog">
-            <GlassButton variant="secondary" size="lg">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-8 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-forest-text font-medium rounded-xl hover:bg-white/20 transition-all duration-300"
+            >
               阅读博客
-            </GlassButton>
+            </motion.button>
           </Link>
         </motion.div>
 

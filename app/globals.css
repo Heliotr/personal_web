@@ -1,36 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  /* 暗夜森林主题配色 */
-  --forest-bg: #1a2a3a;
-  --forest-darker: #0d1520;
-  --forest-card: rgba(255, 255, 255, 0.08);
-  --forest-card-hover: rgba(255, 255, 255, 0.12);
-  --forest-border: rgba(255, 255, 255, 0.15);
+  /* 青蓝渐变主题配色 - 参考 rockaz.cn 风格 */
+  --forest-bg: #0a1628;
+  --forest-bg-top: #0d1f3c;
+  --forest-bg-bottom: #1a3a5c;
+  --forest-darker: #060d18;
+  --forest-card: rgba(255, 255, 255, 0.06);
+  --forest-card-hover: rgba(255, 255, 255, 0.1);
+  --forest-border: rgba(255, 255, 255, 0.1);
   --forest-border-hover: rgba(245, 166, 35, 0.5);
-  --forest-text: #e8e8e8;
-  --forest-text-dim: #8899aa;
+  --forest-text: #e8f0f8;
+  --forest-text-dim: #7a9ab8;
   --forest-gold: #f5a623;
   --forest-gold-dark: #d4910f;
+  --forest-gold-end: #ff6b35;
   --forest-green: #2d5a3d;
   --forest-blue: #3a5a7a;
   --forest-accent: #5a8a7a;
+  --forest-mountain: #051020;
 }
 
 .light {
-  --forest-bg: #f5f7fa;
-  --forest-darker: #e8ecf0;
+  --forest-bg: #f0f4f8;
+  --forest-bg-top: #e8eef5;
+  --forest-bg-bottom: #f5f8fc;
+  --forest-darker: #d8e2ec;
   --forest-card: rgba(255, 255, 255, 0.7);
   --forest-card-hover: rgba(255, 255, 255, 0.9);
-  --forest-border: rgba(0, 0, 0, 0.1);
+  --forest-border: rgba(0, 0, 0, 0.08);
   --forest-border-hover: rgba(245, 166, 35, 0.6);
-  --forest-text: #2d3748;
-  --forest-text-dim: #718096;
+  --forest-text: #1a2a3a;
+  --forest-text-dim: #5a7a9a;
   --forest-gold: #d4910f;
   --forest-gold-dark: #b67d0d;
+  --forest-gold-end: #e55a2b;
   --forest-green: #38a169;
   --forest-blue: #3182ce;
   --forest-accent: #319795;
+  --forest-mountain: #c8d4e0;
 }
 
 @theme inline {
@@ -204,12 +212,31 @@ body {
   opacity: 0.8;
 }
 
-/* 渐变背景 */
+/* 渐变网格背景 - 青蓝渐变 */
 .gradient-mesh {
-  background:
-    radial-gradient(ellipse at 20% 80%, rgba(45, 90, 61, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(58, 90, 122, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(90, 138, 122, 0.08) 0%, transparent 70%);
+  background: linear-gradient(180deg, var(--forest-bg-top) 0%, var(--forest-bg-bottom) 100%);
+}
+
+/* 标题渐变文字动画 */
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.text-gradient-title {
+  background: linear-gradient(90deg, #ffd700 0%, #f5a623 25%, #ff8c00 50%, #ff6b35 75%, #ff4500 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-flow 4s ease infinite;
+}
+
+/* 浮动光点 */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 /* nprogress 进度条自定义 */
