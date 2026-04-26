@@ -18,7 +18,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* 左侧：版权 */}
           <div className="text-sm text-forest-text-dim">
-            © {currentYear} PORTAL. All rights reserved.
+            © {currentYear} Helior. All rights reserved.
           </div>
 
           {/* 中间：社交链接 */}

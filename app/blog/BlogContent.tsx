@@ -59,7 +59,7 @@ export function BlogContent({ posts, profile }: BlogContentProps) {
     默认: "purple",
   };
 
-  const profileName = profile?.name || "PORTAL";
+  const profileName = profile?.name || "Helior";
   const profileAvatar = profile?.avatar;
 
   return (
