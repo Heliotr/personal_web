@@ -64,7 +64,7 @@ export function Header() {
               <span className="text-forest-darker font-bold text-sm">H</span>
             </div>
             <span className="text-forest-text font-semibold text-lg tracking-wide group-hover:text-forest-gold transition-colors">
-              Helior
+              Helior的小破站
             </span>
           </Link>
 

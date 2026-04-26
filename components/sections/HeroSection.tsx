@@ -41,7 +41,7 @@ export function HeroSection() {
         >
           <h1 className="text-5xl md:text-7xl font-bold tracking-wider mb-4">
             <span className="bg-gradient-to-r from-forest-gold to-amber-400 bg-clip-text text-transparent">
-              Helior
+              Helior的小破站
             </span>
           </h1>
           <p className="text-xl md:text-2xl text-forest-text-dim mb-8 font-light">
