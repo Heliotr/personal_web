@@ -25,7 +25,7 @@ function getViewCount(slug: string): number {
     hash = ((hash << 5) - hash) + slug.charCodeAt(i);
     hash |= 0;
   }
-  return Math.abs(hash) % 8000 + 200;
+  return Math.abs(hash) % 91 + 10;
 }
 
 export function BlogSection({ posts }: BlogSectionProps) {
