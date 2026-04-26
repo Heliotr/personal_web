@@ -1,40 +1,40 @@
 ---
-name: "像素程序员"
+name: "Helior"
 title: "全栈开发者 & 创意编程爱好者"
-avatar: "/images/avatar/avatar.png"
+avatar: "/images/avatar/avatar.jpg"
 bio: |
   热爱编程的像素艺术家，专注于Web开发与创意交互设计。
   5年前端开发经验，擅长React生态、动画效果和游戏化UI。
 
-location: "北京, 中国"
-email: "hello@pixeldev.cn"
+location: "桂林, 中国"
+email: "2051368845@qq.com"
 website: "https://www.cat111.cn"
 
 social:
-  github: "https://github.com/pixeldev"
+  github: "https://github.com/Heliotr"
   twitter: "https://twitter.com/pixeldev"
   linkedin: "https://linkedin.com/in/pixeldev"
   bilibili: "https://space.bilibili.com/pixeldev"
 
 skills:
-  - category: "前端开发"
+  - category: "AI开发"
     items:
-      - name: "React/Next.js"
-        level: 95
-      - name: "TypeScript"
-        level: 90
-      - name: "Tailwind CSS"
-        level: 85
-      - name: "Framer Motion"
-        level: 90
+      - name: "Langchain"
+        level: 65
+      - name: "Langgraph"
+        level: 65
+      - name: "MCP"
+        level: 65
+      - name: "vLLM"
+        level: 45
 
   - category: "后端开发"
     items:
-      - name: "Node.js"
-        level: 80
       - name: "Python"
+        level: 80
+      - name: "FastAPI/Flask"
         level: 75
-      - name: "PostgreSQL"
+      - name: "PostgreSQL/MySQL"
         level: 70
 
   - category: "创意工具"
@@ -47,9 +47,9 @@ skills:
         level: 85
 
 stats:
-  yearsExperience: 5
-  projectsCompleted: 30
-  linesOfCode: "500K+"
+  yearsExperience: 2
+  projectsCompleted: 5
+  linesOfCode: "50K+"
 ---
 
 ## 关于我
