@@ -95,35 +95,7 @@ export function BlogContent({ posts, profile }: BlogContentProps) {
             </div>
           </GlassCard>
 
-          <GlassCard className="p-5">
-            <h4 className="text-sm font-medium text-forest-gold mb-3">标签</h4>
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={() => setSelectedTag(null)}
-                className={`text-xs px-2 py-1 rounded-full transition-colors ${
-                  selectedTag === null
-                    ? "bg-forest-blue text-white"
-                    : "bg-forest-card text-forest-text-dim hover:text-forest-blue"
-                }`}
-              >
-                全部
-              </button>
-              {allTags.map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => setSelectedTag(tag)}
-                  className={`text-xs px-2 py-1 rounded-full transition-colors ${
-                    selectedTag === tag
-                      ? "bg-forest-blue text-white"
-                      : "bg-forest-card text-forest-text-dim hover:text-forest-blue"
-                  }`}
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
-          </GlassCard>
-
+          {/* 个人信息卡片 */}
           <GlassCard className="p-6 text-center">
             {profileAvatar ? (
               <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-2 border-forest-gold/30">
@@ -174,6 +146,36 @@ export function BlogContent({ posts, profile }: BlogContentProps) {
                 </div>
                 <div className="text-xs text-forest-text-dim">阅读(分钟)</div>
               </div>
+            </div>
+          </GlassCard>
+
+          {/* 标签筛选 */}
+          <GlassCard className="p-5">
+            <h4 className="text-sm font-medium text-forest-gold mb-3">标签</h4>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setSelectedTag(null)}
+                className={`text-xs px-2 py-1 rounded-full transition-colors ${
+                  selectedTag === null
+                    ? "bg-forest-blue text-white"
+                    : "bg-forest-card text-forest-text-dim hover:text-forest-blue"
+                }`}
+              >
+                全部
+              </button>
+              {allTags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => setSelectedTag(tag)}
+                  className={`text-xs px-2 py-1 rounded-full transition-colors ${
+                    selectedTag === tag
+                      ? "bg-forest-blue text-white"
+                      : "bg-forest-card text-forest-text-dim hover:text-forest-blue"
+                  }`}
+                >
+                  {tag}
+                </button>
+              ))}
             </div>
           </GlassCard>
 
