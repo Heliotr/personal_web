@@ -230,3 +230,56 @@ body {
 #nprogress .peg {
   display: none;
 }
+
+/* Markdown 内容渲染样式 */
+.prose pre,
+.prose code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.prose pre {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.prose li {
+  margin: 0.5rem 0;
+  padding-left: 0.25rem;
+}
+
+.prose ul li {
+  list-style-type: disc;
+}
+
+.prose ol li {
+  list-style-type: decimal;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose p {
+  margin: 0.75rem 0;
+}
+
+.prose blockquote {
+  border-left: 4px solid var(--forest-gold);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: var(--forest-text-dim);
+  font-style: italic;
+}
