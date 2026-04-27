@@ -2,8 +2,8 @@
 title: "AI旅行助手 - 多智能体旅行客服系统"
 slug: "ai-travel-assistant"
 description: "基于 LangGraph 的多智能体旅行客服系统，提供航班、酒店、租车、景点推荐等一站式服务"
-date: "2024-04-25"
-status: "in-progress"
+date: "2025-8-25"
+status: "completed"
 featured: true
 thumbnail: "/images/projects/ai-travel-assistant.png"
 
@@ -17,7 +17,7 @@ techStack:
 
 links:
   demo: "http://localhost:8000/docs"
-  github: ""
+  github: "https://github.com/Heliotr/ai-travel-assistant"
 
 highlights:
   - "多智能体协同工作架构"
