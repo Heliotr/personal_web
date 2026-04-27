@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
+import gfm from "remark-gfm";
 import html from "remark-html";
 
 const contentDirectory = path.join(process.cwd(), "content");
@@ -70,7 +71,7 @@ export async function getMarkdownContent(
   const fileContents = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(fileContents);
 
-  const processedContent = await remark().use(html).process(content);
+  const processedContent = await remark().use(gfm).use(html).process(content);
   const contentHtml = processedContent.toString();
 
   return { data, content, html: contentHtml };
