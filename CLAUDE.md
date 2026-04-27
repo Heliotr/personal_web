@@ -68,14 +68,16 @@ personal_web/
 ├── content/                 # Markdown内容
 │   ├── profile.md          # 个人信息
 │   ├── projects/           # 项目文档
-│   │   ├── pixel-game-engine.md
-│   │   └── ai-code-assistant.md
+│   │   ├── ai_office_assistant.md
+│   │   └── personal_portfolio.md
 │   └── blog/               # 博客文章
 │       └── learning-journey.md
 │
 ├── lib/
 │   └── markdown.ts          # Markdown解析工具
 └── public/                  # 静态资源
+    ├── images/              # 图片资源
+    └── videos/              # 项目演示视频
 ```
 
 ## 关键文件
@@ -101,8 +103,8 @@ personal_web/
 ### 页面功能
 - 首页 - Hero区 + 关于 + 技能 + 项目预览 + 博客预览
 - 关于页 - 个人资料卡片 + 技能展示 + 统计
-- 项目列表 - 卡片网格布局
-- 项目详情 - 技术栈 + 链接 + Markdown内容 + 截图展示 + 阅读进度条
+- 项目列表 - 卡片网格布局 + 视频/图片缩略图
+- 项目详情 - 技术栈 + 链接 + Markdown内容 + 截图展示 + 阅读进度条 + 演示视频
 - 博客列表 - 左侧边栏 + 文章卡片 + 置顶文章标识 + 分类/标签筛选
 - 博客详情 - 文章渲染 + 目录导航 + 代码复制 + 阅读进度条
 - 登录页 - 登录表单占位页面
@@ -144,6 +146,7 @@ date: "2024-03-15"
 status: "completed" | "in-progress" | "archived"
 featured: true
 thumbnail: "/images/projects/xxx.png"
+gif: "/videos/xxx.mp4"
 techStack: ["React", "TypeScript"]
 links:
   demo: "https://..."
