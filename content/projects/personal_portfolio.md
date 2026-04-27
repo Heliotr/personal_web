@@ -2,8 +2,8 @@
 title: "个人作品集网站 - Helior的小破站"
 slug: "personal-portfolio"
 description: "基于Next.js的个人作品集网站，展示项目、技术博客和个人信息，采用暗夜森林主题设计"
-date: "2025-01-15"
-status: "completed"
+date: "2026-04-15"
+status: "in_progress"
 featured: true
 thumbnail: "/images/projects/personal-portfolio.png"
 
