@@ -199,6 +199,3 @@ docker compose up --build
 # 搞定！
 ```
 
-## 下期预告
-
-测试怎么做？pytest + httpx自动化测试实战~

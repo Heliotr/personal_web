@@ -202,6 +202,3 @@ user_id = payload.get("sub")
 # 4. Depends(get_current_user) 验证Token
 ```
 
-## 下期预告
-
-接口太慢怎么办？Redis缓存和Celery异步任务安排上~

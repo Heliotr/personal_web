@@ -143,6 +143,3 @@ class OutputSchema(BaseModel):
 llm.with_structured_output(OutputSchema)
 ```
 
-## 下期预告
-
-Agent智能体是什么？ReAct框架怎么工作？下篇揭晓~

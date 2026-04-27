@@ -166,7 +166,3 @@ alembic downgrade -1                       # 回滚一个版本
 alembic history                            # 查看迁移历史
 alembic current                            # 查看当前版本
 ```
-
-## 下期预告
-
-下篇讲JWT认证，怎么实现登录注册和接口保护~

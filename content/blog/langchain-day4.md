@@ -161,6 +161,3 @@ def search_products(keyword: str, category: str = None, min_price: float = None,
     pass
 ```
 
-## 下期预告
-
-Agent的结构化输出、动态提示词、消息截断...高级特性安排~

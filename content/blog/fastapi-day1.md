@@ -180,7 +180,6 @@ uvicorn app.main:app --reload
 
 访问 `http://127.0.0.1:8000/docs`，Swagger UI 自动生成！
 
-**我的内心**：这也太爽了吧！Flask还要装什么flask-restx才能有文档，FastAPI直接内置！
 
 ## 07 总结
 
@@ -189,6 +188,3 @@ uvicorn app.main:app --reload
 3. **response_model** 过滤返回字段，保证数据安全
 4. **FastAPI自动生成Swagger**，接入方狂喜
 
-## 下期预告
-
-下篇讲如何接入PostgreSQL数据库，SQLAlchemy 2.0 async怎么用~

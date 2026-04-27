@@ -189,36 +189,10 @@ config2 = {"configurable": {"thread_id": "s2"}}
 agent.invoke({"messages": [{"role": "user", "content": "给我推荐"}]}, config2, context)
 ```
 
-## 06 17天学习总结
 
-从Python基础到FastAPI后端，再到LangChain AI应用，17天学下来：
+## 06 写在最后
 
-**学习计划3（Python基础）**：
-- Day1: 并发编程（多线程/多进程/协程）
-- Day2: 异步编程、装饰器、上下文管理器
-- Day3: FastAPI + Flask Web框架
-
-**学习计划1（FastAPI后端）**：
-- Day1: 项目骨架、Pydantic
-- Day2: PostgreSQL + SQLAlchemy
-- Day3: Alembic迁移
-- Day4: JWT认证
-- Day5: Redis缓存 + Celery
-- Day6: Docker部署
-- Day7: pytest测试
-
-**学习计划2（LangChain AI）**：
-- Day1: LangChain基础、模型初始化
-- Day2: 结构化输出、速率限制
-- Day3: Agent智能体
-- Day4: Tools工具开发
-- Day5: Agent高级特性
-- Day6: 短期记忆
-- Day7: 长期记忆 + 综合项目
-
-## 07 写在最后
-
-这17天学的都是当下最实用的技术：
+这1些日子学的都是当下最实用的技术：
 - Python后端开发能力
 - 异步高性能API设计
 - 数据库设计与管理
@@ -227,5 +201,3 @@ agent.invoke({"messages": [{"role": "user", "content": "给我推荐"}]}, config
 这些都是能直接用在工作和项目中的技能。
 
 感谢看到这里的你！技术之路漫长，我们一起加油！
-
-**代码改变世界，从你开始。**

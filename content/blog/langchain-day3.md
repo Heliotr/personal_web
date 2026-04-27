@@ -126,6 +126,3 @@ result = agent.invoke(
 3. **create_agent**一行代码创建Agent
 4. **context**传递用户信息
 
-## 下期预告
-
-Tool怎么写才规范？Pydantic参数验证、错误处理怎么搞？下篇见~

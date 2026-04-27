@@ -185,6 +185,3 @@ pytest --cov=app --cov-report=term-missing
 
 这7天学的都是工作中真真切切用得上的技能，值！
 
-## 下期预告
-
-接下来要学LangChain了！AI应用开发，7天速通~

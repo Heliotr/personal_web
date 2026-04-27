@@ -189,6 +189,3 @@ celery -A app.core.celery_app worker --loglevel=info
 # 3. 计数：Redis INCR → 批量同步
 ```
 
-## 下期预告
-
-怎么把服务部署到服务器？Docker Compose一键启动了解一下~

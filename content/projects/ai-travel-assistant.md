@@ -40,12 +40,14 @@ highlights:
 
 系统采用层级式多智能体架构：
 
+```
 supervisor (主管Agent)
 ├── research_agent (网络搜索)
 ├── flight_booking_agent (航班服务)
 ├── hotel_booking_agent (酒店服务)
 ├── car_rental_booking_agent (租车服务)
 └── excursion_booking_agent (景点推荐)
+```
 
 主管 Agent 负责理解用户意图，将任务分发给对应的专业子 Agent，并整合各子 Agent 的结果返回给用户。子 Agent
 执行完成后返回 supervisor 进行总结，保证多轮对话的上下文连续性。
