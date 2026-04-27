@@ -30,11 +30,28 @@ export default async function ProjectsPage() {
             {projects.map((project, index) => (
               <ScrollReveal key={project.slug} delay={index * 0.05}>
                 <Link href={`/projects/${project.slug}`}>
-                  <GlassCard className="h-full group">
-                    <div className="aspect-video bg-gradient-to-br from-forest-blue/30 to-forest-green/30 rounded-card mb-4 flex items-center justify-center group-hover:from-forest-blue/40 group-hover:to-forest-green/40 transition-all">
-                      <svg className="w-12 h-12 text-forest-gold/50 group-hover:text-forest-gold/70 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                      </svg>
+                  <GlassCard className="h-full group overflow-hidden">
+                    <div className="aspect-video bg-gradient-to-br from-forest-blue/30 to-forest-green/30 rounded-card mb-4 flex items-center justify-center group-hover:from-forest-blue/40 group-hover:to-forest-green/40 transition-all overflow-hidden">
+                      {project.gif ? (
+                        <video
+                          src={project.gif}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-full object-cover"
+                        />
+                      ) : project.thumbnail ? (
+                        <img
+                          src={project.thumbnail}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <svg className="w-12 h-12 text-forest-gold/50 group-hover:text-forest-gold/70 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                      )}
                     </div>
 
                     <div className="flex items-center gap-2 mb-3">

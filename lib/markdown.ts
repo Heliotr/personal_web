@@ -39,6 +39,7 @@ export interface ProjectFrontmatter {
   status: "completed" | "in-progress" | "archived";
   featured: boolean;
   thumbnail: string;
+  gif?: string;
   screenshots?: string[];
   techStack: string[];
   links?: {

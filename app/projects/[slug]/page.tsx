@@ -75,7 +75,16 @@ export default async function ProjectDetailPage({ params }: Props) {
           {/* 主图/缩略图展示 */}
           <ScrollReveal delay={0.25}>
             <div className="aspect-video bg-gradient-to-br from-forest-blue/30 to-forest-green/30 rounded-card mb-8 flex items-center justify-center overflow-hidden">
-              {project.thumbnail ? (
+              {project.gif ? (
+                <video
+                  src={project.gif}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-contain"
+                />
+              ) : project.thumbnail ? (
                 <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${project.thumbnail})` }} />
               ) : (
                 <div className="text-center">

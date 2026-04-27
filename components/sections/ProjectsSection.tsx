@@ -11,6 +11,7 @@ interface Project {
   techStack: string[];
   status: "completed" | "in-progress" | "archived";
   thumbnail: string;
+  gif?: string;
   featured?: boolean;
 }
 
@@ -39,12 +40,29 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           {featuredProjects.length > 0 && (
             <ScrollReveal delay={0.1}>
               <Link href={`/projects/${featuredProjects[0].slug}`} className="col-span-2 row-span-2 block h-full">
-                <GlassCard className="h-full group">
+                <GlassCard className="h-full group overflow-hidden">
                   <div className="h-full flex flex-col">
-                    <div className="flex-1 bg-gradient-to-br from-forest-blue/40 to-forest-green/40 rounded-card mb-4 flex items-center justify-center">
-                      <svg className="w-16 h-16 text-forest-gold/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                      </svg>
+                    <div className="flex-1 bg-gradient-to-br from-forest-blue/40 to-forest-green/40 rounded-card mb-4 flex items-center justify-center overflow-hidden">
+                      {featuredProjects[0].gif ? (
+                        <video
+                          src={featuredProjects[0].gif}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-full object-cover"
+                        />
+                      ) : featuredProjects[0].thumbnail ? (
+                        <img
+                          src={featuredProjects[0].thumbnail}
+                          alt={featuredProjects[0].title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <svg className="w-16 h-16 text-forest-gold/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                      )}
                     </div>
                     <h3 className="text-lg font-medium text-forest-text mb-1 group-hover:text-forest-gold transition-colors">
                       {featuredProjects[0].title}
@@ -62,12 +80,29 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           {otherProjects.slice(0, 2).map((project, index) => (
             <ScrollReveal key={project.slug} delay={0.1 + index * 0.05}>
               <Link href={`/projects/${project.slug}`} className="col-span-2 row-span-1 block">
-                <GlassCard className="h-full group">
+                <GlassCard className="h-full group overflow-hidden">
                   <div className="h-full flex items-center gap-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-forest-blue/30 to-forest-green/30 rounded-card flex-shrink-0 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-forest-gold/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                      </svg>
+                    <div className="w-20 h-20 bg-gradient-to-br from-forest-blue/30 to-forest-green/30 rounded-card flex-shrink-0 flex items-center justify-center overflow-hidden">
+                      {project.gif ? (
+                        <video
+                          src={project.gif}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-full object-cover"
+                        />
+                      ) : project.thumbnail ? (
+                        <img
+                          src={project.thumbnail}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <svg className="w-8 h-8 text-forest-gold/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                      )}
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-sm font-medium text-forest-text mb-1 group-hover:text-forest-gold transition-colors truncate">
@@ -87,12 +122,29 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           {otherProjects.slice(2, 4).map((project, index) => (
             <ScrollReveal key={project.slug} delay={0.2 + index * 0.05}>
               <Link href={`/projects/${project.slug}`} className="col-span-2 row-span-1 block">
-                <GlassCard className="h-full group">
+                <GlassCard className="h-full group overflow-hidden">
                   <div className="h-full flex items-center gap-4">
-                    <div className="w-20 h-20 bg-gradient-to-br from-forest-blue/30 to-forest-green/30 rounded-card flex-shrink-0 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-forest-gold/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                      </svg>
+                    <div className="w-20 h-20 bg-gradient-to-br from-forest-blue/30 to-forest-green/30 rounded-card flex-shrink-0 flex items-center justify-center overflow-hidden">
+                      {project.gif ? (
+                        <video
+                          src={project.gif}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-full object-cover"
+                        />
+                      ) : project.thumbnail ? (
+                        <img
+                          src={project.thumbnail}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <svg className="w-8 h-8 text-forest-gold/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                      )}
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-sm font-medium text-forest-text mb-1 group-hover:text-forest-gold transition-colors truncate">
