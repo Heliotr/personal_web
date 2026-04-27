@@ -86,7 +86,7 @@ personal_web/
 - `app/globals.css` - 暗夜森林主题CSS变量和工具类
 - `components/animations/ForestBackground.tsx` - 视差滚动背景
 - `components/sections/HeroSection.tsx` - 诗意标语展示
-- `lib/markdown.ts` - 内容管理系统
+- `lib/markdown.ts` - 内容管理系统 (支持表格GFM)
 - `components/content/SearchModal.tsx` - 全局搜索
 
 ## 已完成功能
@@ -104,7 +104,7 @@ personal_web/
 - 首页 - Hero区 + 关于 + 技能 + 项目预览 + 博客预览
 - 关于页 - 个人资料卡片 + 技能展示 + 统计
 - 项目列表 - 卡片网格布局 + 视频/图片缩略图
-- 项目详情 - 技术栈 + 链接 + Markdown内容 + 截图展示 + 阅读进度条 + 演示视频
+- 项目详情 - 技术栈 + 链接 + Markdown内容 + 截图展示 + 阅读进度条 + 演示视频 + 表格渲染
 - 博客列表 - 左侧边栏 + 文章卡片 + 置顶文章标识 + 分类/标签筛选
 - 博客详情 - 文章渲染 + 目录导航 + 代码复制 + 阅读进度条
 - 登录页 - 登录表单占位页面
