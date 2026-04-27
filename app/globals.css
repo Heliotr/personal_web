@@ -265,13 +265,51 @@ body {
   word-break: break-word;
 }
 
+/* 代码块 - 带边框的卡片效果 */
 .prose pre {
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 12px;
+  padding: 1.25rem;
+  margin: 1.25rem 0;
+  border-radius: 14px;
   overflow-x: auto;
+  background: rgba(5, 10, 20, 0.7) !important;
+  border: 1.5px solid rgba(245, 166, 35, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  position: relative;
 }
 
+/* 代码块顶部装饰线 */
+.prose pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(245, 166, 35, 0.4), transparent);
+  border-radius: 1px;
+}
+
+/* 代码块内代码 */
+.prose pre code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #c9d1d9;
+}
+
+/* 行内代码 */
+.prose code {
+  background: rgba(245, 166, 35, 0.1);
+  border: 1px solid rgba(245, 166, 35, 0.2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.875em;
+  color: var(--forest-gold);
+}
+
+/* 列表 */
 .prose ul,
 .prose ol {
   padding-left: 1.5rem;
