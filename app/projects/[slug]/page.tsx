@@ -172,7 +172,10 @@ export default async function ProjectDetailPage({ params }: Props) {
                   prose-p:text-forest-text-dim prose-p:leading-relaxed
                   prose-a:text-forest-gold prose-a:no-underline hover:prose-a:text-amber-400
                   prose-code:text-forest-gold prose-code:bg-forest-card prose-code:px-2 prose-code:py-0.5 prose-code:rounded
-                  prose-pre:bg-forest-darker prose-pre:border prose-pre:border-forest-border prose-pre:rounded-card"
+                  prose-pre:bg-forest-darker prose-pre:border prose-pre:border-forest-border prose-pre:rounded-card
+                  prose-table:w-full prose-table:border-collapse prose-table:my-4
+                  prose-th:px-4 prose-th:py-2 prose-th:bg-forest-card prose-th:text-forest-gold prose-th:border prose-th:border-forest-border
+                  prose-td:px-4 prose-td:py-2 prose-td:text-forest-text-dim prose-td:border prose-td:border-forest-border"
                 dangerouslySetInnerHTML={{ __html: project.contentHtml }}
               />
             </GlassCard>
