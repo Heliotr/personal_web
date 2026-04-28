@@ -1,7 +1,6 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { getAllProjects, getAllBlogPosts } from "@/lib/markdown";
 
 interface SearchResult {
   type: "project" | "blog";
@@ -15,6 +14,7 @@ interface SearchContextType {
   openSearch: () => void;
   closeSearch: () => void;
   results: SearchResult[];
+  isLoading: boolean;
 }
 
 const SearchContext = createContext<SearchContextType | undefined>(undefined);
@@ -22,28 +22,21 @@ const SearchContext = createContext<SearchContextType | undefined>(undefined);
 export function SearchProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [results, setResults] = useState<SearchResult[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function loadData() {
-      const projects = await getAllProjects();
-      const posts = await getAllBlogPosts();
-
-      const searchResults: SearchResult[] = [
-        ...projects.map((p) => ({
-          type: "project" as const,
-          slug: p.slug,
-          title: p.title,
-          description: p.description,
-        })),
-        ...posts.map((p) => ({
-          type: "blog" as const,
-          slug: p.slug,
-          title: p.title,
-          description: p.description,
-        })),
-      ];
-
-      setResults(searchResults);
+      try {
+        const response = await fetch("/api/search");
+        if (response.ok) {
+          const data = await response.json();
+          setResults(data);
+        }
+      } catch (error) {
+        console.error("Failed to load search data:", error);
+      } finally {
+        setIsLoading(false);
+      }
     }
 
     loadData();
@@ -53,7 +46,7 @@ export function SearchProvider({ children }: { children: ReactNode }) {
   const closeSearch = () => setIsOpen(false);
 
   return (
-    <SearchContext.Provider value={{ isOpen, openSearch, closeSearch, results }}>
+    <SearchContext.Provider value={{ isOpen, openSearch, closeSearch, results, isLoading }}>
       {children}
     </SearchContext.Provider>
   );
