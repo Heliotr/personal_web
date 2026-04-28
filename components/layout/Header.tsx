@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { SearchModal } from "@/components/content/SearchModal";
+import { useSearch } from "@/components/content/SearchProvider";
 
 const navItems = [
   { href: "/", label: "首页" },
@@ -14,18 +15,12 @@ const navItems = [
   { href: "/about", label: "关于" },
 ];
 
-// 静态搜索数据 - 后续可以改为API获取
-const staticSearchResults = [
-  { type: "project" as const, slug: "pixel-game-engine", title: "像素游戏引擎", description: "基于WebGL的轻量级像素游戏开发引擎" },
-  { type: "project" as const, slug: "ai-code-assistant", title: "AI代码助手", description: "基于Claude API的智能编程助手" },
-  { type: "blog" as const, slug: "learning-journey", title: "从零到全栈：我的编程学习之路", description: "分享我如何从编程小白成长为全栈开发者的经历" },
-];
-
 export function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const { results } = useSearch();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -170,7 +165,7 @@ export function Header() {
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
-        results={staticSearchResults}
+        results={results}
       />
     </>
   );
