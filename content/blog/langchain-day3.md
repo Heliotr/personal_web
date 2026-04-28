@@ -1,7 +1,7 @@
 ---
 title: "我做出了第一个AI智能体：它会自己思考和工具调用"
 slug: "langchain-agent-first"
-description: "从纯LLM到Agent，我理解了AI为什么能"思考""
+description: "从纯LLM到Agent，我理解了AI为什么能思考"
 date: "2026-01-24"
 tags:
   - "LangChain"
