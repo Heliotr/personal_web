@@ -6,7 +6,6 @@ DOC_SITES = {
         "start_url": "https://fastapi.tiangolo.com/",
         "sitemap": "https://fastapi.tiangolo.com/sitemap.xml",
         "allowed_prefixes": ["https://fastapi.tiangolo.com/"],
-        # 排除非文档页面
         "exclude_patterns": ["/blog/", "/resources/", "/help/", "/sponsors/"],
         "content_selector": "article",
         "title_selector": "h1",
@@ -14,27 +13,22 @@ DOC_SITES = {
     },
     "langchain": {
         "name": "LangChain",
-        "start_url": "https://python.langchain.com/docs/",
-        "sitemap": "https://python.langchain.com/sitemap.xml",
+        "start_url": "https://docs.langchain.com/oss/python/langchain/overview",
+        "sitemap": "https://docs.langchain.com/sitemap.xml",
         "allowed_prefixes": [
-            "https://python.langchain.com/docs/",
-            "https://python.langchain.com/api/",
+            "https://docs.langchain.com/oss/python/langchain/",
         ],
-        "exclude_patterns": [
-            "/blog/",
-            "/blog/",
-            # 排除太多细节的 API 文档
-        ],
-        "content_selector": "article.docs-content, .prose",
+        "exclude_patterns": ["/blog/"],
+        "content_selector": "article.docs-content, .prose, main",
         "title_selector": "h1",
         "sidebar_selector": ".sidebar, nav",
     },
     "langgraph": {
         "name": "LangGraph",
-        "start_url": "https://langchain-ai.github.io/langgraph/",
-        "sitemap": "https://langchain-ai.github.io/langgraph/sitemap.xml",
+        "start_url": "https://docs.langchain.com/oss/python/langgraph/overview",
+        "sitemap": "https://docs.langchain.com/sitemap.xml",
         "allowed_prefixes": [
-            "https://langchain-ai.github.io/langgraph/"
+            "https://docs.langchain.com/oss/python/langgraph/",
         ],
         "exclude_patterns": ["/blog/"],
         "content_selector": "article, main",
