@@ -75,7 +75,26 @@ personal_web/
 │
 ├── lib/
 │   └── markdown.ts          # Markdown解析工具
-└── public/                  # 静态资源
+│
+├── crawlers/                # 自动化爬虫 Agent
+│   ├── config.py           # 共享配置（API keys、输出目录）
+│   ├── requirements.txt    # Python 依赖
+│   ├── doc_crawler/        # 文档爬虫 Agent：爬技术文档 → Markdown → 智能切片 → RAG知识库
+│   │   ├── agent.py       # 主入口，编排爬取/转换/切片/保存流程
+│   │   ├── crawler.py     # httpx 爬取 + sitemap/导航链接发现
+│   │   ├── converter.py   # HTML → Markdown 转换（markdownify）
+│   │   ├── chunker.py     # 基于标题层级的智能切片引擎
+│   │   └── config.py      # 目标站点配置（FastAPI/LangChain/LangGraph等）
+│   ├── jd_crawler/        # JD 爬虫 Agent：爬 BOSS 直聘 → LLM提取 → 技能分析
+│   │   ├── agent.py       # 主入口（crawl/analyze/crawl-and-analyze）
+│   │   ├── browser.py     # Playwright 浏览器管理 + Cookie 持久化
+│   │   ├── extractor.py   # LLM（Claude API）驱动的 JD 结构化提取 + 规则兜底
+│   │   ├── analyzer.py    # 技能分析 + 可视化报告（Matplotlib）
+│   │   ├── storage.py     # SQLite 存储 + 去重
+│   │   └── config.py      # BOSS 直聘站点配置
+│   └── knowledge/         # 已构建的文档知识库（.gitignore 忽略，需要本地爬取）
+│
+├── public/                  # 静态资源
     ├── images/              # 图片资源
     └── videos/              # 项目演示视频
 ```
@@ -187,6 +206,17 @@ npm run build
 
 # 启动生产
 npm start
+
+# Python 爬虫（进入 crawlers 目录）
+cd crawlers
+source venv/Scripts/activate       # 激活虚拟环境（Windows Git Bash）
+python -m doc_crawler.agent fastapi                       # 爬取 FastAPI 文档
+python -m doc_crawler.agent langchain                     # 爬取 LangChain 文档
+python -m doc_crawler.agent langgraph                     # 爬取 LangGraph 文档
+python -m doc_crawler.agent fastapi --limit 10            # 限制爬取页数
+python -m jd_crawler.agent crawl --query "AI应用开发"      # 爬取 BOSS 直聘
+python -m jd_crawler.agent crawl-and-analyze              # 爬取+分析
+python -m jd_crawler.agent analyze                        # 仅分析已有数据
 ```
 
 ## 注意事项
@@ -196,3 +226,38 @@ npm start
 3. 动画组件使用 Framer Motion
 4. 页面使用静态生成(SSG)需要运行 build 更新
 5. 搜索功能支持 Cmd+K 快捷键打开
+
+## 爬虫 Agent 说明
+
+### 文档爬虫 Agent（crawlers/doc_crawler/）
+爬取技术文档网站，构建个人 RAG 知识库。
+
+**流程**: 发现 URL（sitemap）→ 并发爬取 HTML → 提取主要内容 → 转换 Markdown → 按标题层级切片 → 保存
+
+**已爬取知识库**（存储在 `crawlers/knowledge/`，被 .gitignore 忽略，需本地运行生成）:
+| 站点 | 页面数 | Chunks | Tokens |
+|---|---|---|---|
+| FastAPI | 152 | 2,910 | 777,556 |
+| LangChain | 61 | 514 | 171,082 |
+| LangGraph | 67 | 434 | 163,800 |
+
+切片策略：以 h1/h2 为边界，保留父标题链作为上下文，合并过小段落（<50字符），代码块不被切断。
+
+### JD 爬虫 Agent（crawlers/jd_crawler/）
+爬取 BOSS 直聘招聘信息，LLM 驱动提取结构化字段，输出技能分析报告。
+
+**流程**: Playwright 浏览器 → 手动登录（首次）→ Cookie 持久化 → 搜索列表页 → 进入详情页 → LLM 提取结构化字段 → SQLite 存储 → 技能统计 + 可视化报告
+
+**首次使用**：
+1. 在 `crawlers/.env` 中配置 `ANTHROPIC_API_KEY`
+2. 运行 `python -m jd_crawler.agent crawl` 首次会打开浏览器，手动登录 BOSS 直聘
+3. Cookie 自动保存，后续无需重复登录
+
+### 技术选型
+| 组件 | 文档爬虫 | JD 爬虫 |
+|---|---|---|
+| 爬取引擎 | httpx + BeautifulSoup | Playwright |
+| 反爬 | 模拟 UA + 请求延迟 | Cookie持久化 + 人类行为模拟 |
+| 内容提取 | CSS选择器 + markdownify | Claude API 结构化提取 + 规则兜底 |
+| 存储 | Markdown文件 + JSON索引 | SQLite |
+| 分析 | — | Matplotlib + Pandas |
