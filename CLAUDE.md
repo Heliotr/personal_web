@@ -68,6 +68,7 @@ personal_web/
 ├── content/                 # Markdown内容
 │   ├── profile.md          # 个人信息
 │   ├── projects/           # 项目文档
+│   │   ├── crawler-agent-system.md  # 自动化爬虫 Agent
 │   │   ├── ai_office_assistant.md
 │   │   └── personal_portfolio.md
 │   └── blog/               # 博客文章
@@ -170,6 +171,11 @@ techStack: ["React", "TypeScript"]
 links:
   demo: "https://..."
   github: "https://..."
+highlights:
+  - "亮点1"
+  - "亮点2"
+screenshots:
+  - "/images/projects/screenshot1.png"
 ---
 
 ## 项目详情...
